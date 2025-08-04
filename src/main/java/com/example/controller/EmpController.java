@@ -43,5 +43,14 @@ public class EmpController {
         PageResult pageResult = empService.page(page, pageSize, name, gender, begin, end);
         return Result.success(pageResult);
     }
+    /**
+     * 新增员工
+     */
+    @PostMapping
+    public Result save(@RequestBody Emp emp){
+        log.info("新增员工, emp={}", emp);
+        empService.save(emp);
+        return Result.success();
+    }
 
 }

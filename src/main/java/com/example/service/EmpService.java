@@ -17,4 +17,10 @@ public interface EmpService {
      * @return
      */
     PageResult page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    void save(Emp emp);
 }

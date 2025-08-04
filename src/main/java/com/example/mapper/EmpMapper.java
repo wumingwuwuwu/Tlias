@@ -1,7 +1,9 @@
 package com.example.mapper;
 
 import com.example.pojo.Emp;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDate;
@@ -43,6 +45,19 @@ public interface EmpMapper {
             " ORDER BY e.update_time DESC" +
             "</script>")
     public List<Emp> list(String name, Integer gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    @Insert(
+            "insert into emp(username, password, name, gender, phone, job, salary, image, entry_date, create_time, update_time, dept_id) " +
+            "values(#{username}, #{password}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{createTime}, #{updateTime}, #{deptId})"
+    )
+    void insert(Emp emp);
+
+
 
 
 }
