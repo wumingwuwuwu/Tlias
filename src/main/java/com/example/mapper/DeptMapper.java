@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface DeptMapper {
 
-    @Select("SELECT id, name, create_time, updata_time from dept")
+    @Select("SELECT id, name, create_time, update_time from dept")
     List<Dept> findAll();
 
     @Delete("DELETE FROM dept WHERE id=#{id}")
