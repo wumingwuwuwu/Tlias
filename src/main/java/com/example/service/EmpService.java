@@ -23,4 +23,6 @@ public interface EmpService {
      * @param emp
      */
     void save(Emp emp);
+
+    void deleteByIds(List<Integer> ids);
 }
