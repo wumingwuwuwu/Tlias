@@ -10,6 +10,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
@@ -44,6 +45,9 @@ public class EmpServiceImpl implements EmpService {
         return new PageResult(p.getTotal(), p.getResult());
     }
 
+    //rollbackFor设置遇到什么异常的情况下回滚事务
+    //propagation设置事务传播特性
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void save(Emp emp) {
         //1.补全基础属性
