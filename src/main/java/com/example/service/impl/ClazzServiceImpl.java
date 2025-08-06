@@ -3,6 +3,7 @@ package com.example.service.impl;
 import com.example.mapper.ClazzMapper;
 import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
+import com.example.pojo.Emp;
 import com.example.pojo.PageResult;
 import com.example.service.ClazzService;
 import com.github.pagehelper.Page;
@@ -28,5 +29,21 @@ public class ClazzServiceImpl implements ClazzService {
         List<Clazz> list = clazzMapper.list(clazzQueryParam);
         Page<Clazz> p = (Page<Clazz>) list;
         return new PageResult(p.getTotal(), p.getResult());
+    }
+
+    /**
+     * 查询所有老师
+     */
+    @Override
+    public List<Clazz> findAll() {
+        return clazzMapper.findAll();
+    }
+
+    /**
+     * 保存班级信息
+     */
+    @Override
+    public void save(Clazz clazz) {
+        clazzMapper.insert(clazz);
     }
 }

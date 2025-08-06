@@ -1,16 +1,13 @@
 package com.example.controller;
 
+import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
 import com.example.pojo.PageResult;
 import com.example.pojo.Result;
 import com.example.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -32,11 +29,21 @@ public class ClazzController {
     /**
      * 查询所有班级
      */
-
+    @GetMapping("/list")
+    public Result findAll() {
+        log.info("查询所有班级");
+        return Result.success(clazzService.findAll());
+    }
 
     /**
      * 添加班级
      */
+    @PostMapping
+    public Result save(@RequestBody Clazz clazz) {
+        log.info("添加班级，参数：{}", clazz);
+        clazzService.save(clazz);
+        return Result.success();
+    }
 
 
     /**
