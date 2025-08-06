@@ -4,6 +4,7 @@ import com.example.mapper.EmpExprMapper;
 import com.example.mapper.EmpMapper;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpExpr;
+import com.example.pojo.LoginInfo;
 import com.example.pojo.PageResult;
 import com.example.service.EmpService;
 import com.github.pagehelper.Page;
@@ -97,5 +98,15 @@ public class EmpServiceImpl implements EmpService {
             exprList.forEach(empExpr -> empExpr.setEmpId(empId));
             empExprMapper.insertBatch(exprList);
         }
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        Emp empLogin = empMapper.getUsernameAndPassword(emp);
+        if(empLogin != null){
+            LoginInfo loginInfo = new LoginInfo(empLogin.getId(), empLogin.getUsername(), empLogin.getName(), null);
+            return loginInfo;
+        }
+        return null;
     }
 }
