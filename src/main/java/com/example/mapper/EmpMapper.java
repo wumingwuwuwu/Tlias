@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.Emp;
+import com.example.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
@@ -42,7 +43,7 @@ public interface EmpMapper {
             "</if>" +
             " ORDER BY e.update_time DESC" +
             "</script>")
-    public List<Emp> list(String name, Integer gender, LocalDate begin, LocalDate end);
+    public List<Emp> list(EmpQueryParam empQueryParam);
 
     /**
      * 新增员工

@@ -2,10 +2,7 @@ package com.example.service.impl;
 
 import com.example.mapper.EmpExprMapper;
 import com.example.mapper.EmpMapper;
-import com.example.pojo.Emp;
-import com.example.pojo.EmpExpr;
-import com.example.pojo.LoginInfo;
-import com.example.pojo.PageResult;
+import com.example.pojo.*;
 import com.example.service.EmpService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -37,11 +34,11 @@ public class EmpServiceImpl implements EmpService {
 //    }
 
     @Override
-    public PageResult page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end) {
+    public PageResult page(EmpQueryParam empQueryParam) {
         //1. 设置PageHelper分页参数
-        PageHelper.startPage(page, pageSize);
+        PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
         //2. 执行查询
-        List<Emp> empList = empMapper.list(name, gender, begin, end);
+        List<Emp> empList = empMapper.list(empQueryParam);
         //3. 封装分页结果
         Page<Emp> p = (Page<Emp>) empList;
         return new PageResult(p.getTotal(), p.getResult());

@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.pojo.Emp;
+import com.example.pojo.EmpQueryParam;
 import com.example.pojo.LoginInfo;
 import com.example.pojo.PageResult;
 
@@ -13,11 +14,10 @@ public interface EmpService {
 
     /**
      * 分页查询
-     * @param page
-     * @param pageSize
+     * @param empQueryParam
      * @return
      */
-    PageResult page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end);
+    PageResult page(EmpQueryParam empQueryParam);
 
     /**
      * 新增员工

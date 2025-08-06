@@ -1,9 +1,6 @@
 package com.example.controller;
 
-import com.example.pojo.Dept;
-import com.example.pojo.Emp;
-import com.example.pojo.PageResult;
-import com.example.pojo.Result;
+import com.example.pojo.*;
 import com.example.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +31,9 @@ public class EmpController {
 //    }
 
     @GetMapping
-    public Result page(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "10") Integer pageSize,
-                       String name, Integer gender,
-                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
-                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
-        log.info("查询请求参数： {}, {}, {}, {}, {}, {}", page, pageSize, name, gender, begin, end);
-        PageResult pageResult = empService.page(page, pageSize, name, gender, begin, end);
+    public Result page(EmpQueryParam empQueryParam) {
+        log.info("查询请求参数： {}",empQueryParam);
+        PageResult pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
     }
     /**
