@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -37,14 +36,14 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public PageResult page(EmpQueryParam empQueryParam) {
+    public PageResult<Emp> page(EmpQueryParam empQueryParam) {
         //1. 设置PageHelper分页参数
         PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
         //2. 执行查询
         List<Emp> empList = empMapper.list(empQueryParam);
         //3. 封装分页结果
         Page<Emp> p = (Page<Emp>) empList;
-        return new PageResult(p.getTotal(), p.getResult());
+        return new PageResult<Emp>(p.getTotal(), p.getResult());
     }
 
     //rollbackFor设置遇到什么异常的情况下回滚事务

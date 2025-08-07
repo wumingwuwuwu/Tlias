@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageResult {
+public class PageResult<T> {
     private Long total; //总记录数
-    private List rows; //当前页数据列表
+    private List<T> rows; //当前页数据列表
 }

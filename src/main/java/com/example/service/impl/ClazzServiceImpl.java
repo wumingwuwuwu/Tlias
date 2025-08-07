@@ -3,7 +3,6 @@ package com.example.service.impl;
 import com.example.mapper.ClazzMapper;
 import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
-import com.example.pojo.Emp;
 import com.example.pojo.PageResult;
 import com.example.service.ClazzService;
 import com.github.pagehelper.Page;
@@ -11,7 +10,6 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,11 +23,11 @@ public class ClazzServiceImpl implements ClazzService {
      * 班级分页查询
      */
     @Override
-    public PageResult page(ClazzQueryParam clazzQueryParam) {
+    public PageResult<Clazz> page(ClazzQueryParam clazzQueryParam) {
         PageHelper.startPage(clazzQueryParam.getPage(), clazzQueryParam.getPageSize());
         List<Clazz> list = clazzMapper.list(clazzQueryParam);
         Page<Clazz> p = (Page<Clazz>) list;
-        return new PageResult(p.getTotal(), p.getResult());
+        return new PageResult<Clazz>(p.getTotal(), p.getResult());
     }
 
     /**

@@ -22,7 +22,7 @@ public class ClazzController {
     @GetMapping
     public Result page(ClazzQueryParam clazzQueryParam) {
         log.info("班级分页查询，参数：{}", clazzQueryParam);
-        PageResult pageResult = clazzService.page(clazzQueryParam);
+        PageResult<Clazz> pageResult = clazzService.page(clazzQueryParam);
         return Result.success(pageResult);
     }
 

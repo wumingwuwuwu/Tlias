@@ -4,10 +4,8 @@ import com.example.pojo.*;
 import com.example.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -33,7 +31,7 @@ public class EmpController {
     @GetMapping
     public Result page(EmpQueryParam empQueryParam) {
         log.info("查询请求参数： {}",empQueryParam);
-        PageResult pageResult = empService.page(empQueryParam);
+        PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
     }
     /**

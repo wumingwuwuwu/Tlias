@@ -5,7 +5,6 @@ import com.example.pojo.EmpQueryParam;
 import com.example.pojo.LoginInfo;
 import com.example.pojo.PageResult;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface EmpService {
@@ -21,7 +20,7 @@ public interface EmpService {
      * @param empQueryParam
      * @return
      */
-    PageResult page(EmpQueryParam empQueryParam);
+    PageResult<Emp> page(EmpQueryParam empQueryParam);
 
     /**
      * 新增员工
