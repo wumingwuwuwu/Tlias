@@ -45,6 +45,7 @@ public class ClazzServiceImpl implements ClazzService {
      */
     @Override
     public void save(Clazz clazz) {
+        clazz.setCreateTime(LocalDateTime.now());//设置创建时间
         clazzMapper.insert(clazz);
     }
 
