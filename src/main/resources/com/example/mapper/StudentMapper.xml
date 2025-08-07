@@ -74,4 +74,13 @@
         where id = #{id}
     </update>
 
+    <!--根据id列表删除学生-->
+    <delete id="deleteByIds">
+        delete from student
+            where id in
+            <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+                #{id}
+            </foreach>
+    </delete>
+
 </mapper>

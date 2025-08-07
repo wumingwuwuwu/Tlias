@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/students")
@@ -59,7 +61,12 @@ public class StudentController {
      * 批量删除学生信息
      * @param ids
      */
-    //@DeleteMapping
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable("ids") List<Integer> ids) {
+        log.info("批量删除学生信息,参数：{}", ids);
+        studentService.deleteByIds(ids);
+        return Result.success();
+    }
 
 
     /**

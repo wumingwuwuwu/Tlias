@@ -4,6 +4,8 @@ import com.example.pojo.PageResult;
 import com.example.pojo.Student;
 import com.example.pojo.StudentQueryParam;
 
+import java.util.List;
+
 
 public interface StudentService {
 
@@ -27,4 +29,9 @@ public interface StudentService {
      * 修改学生信息
      */
     void update(Student student);
+
+    /**
+     * 删除学生信息
+     */
+    void deleteByIds(List<Integer> ids);
 }

@@ -65,4 +65,13 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.update(student);
     }
 
+    @Override
+    /**
+     * 删除学生信息
+     * @param ids 学生ID列表
+     */
+    public void deleteByIds(List<Integer> ids) {
+        studentMapper.deleteByIds(ids);
+    }
+
 }
