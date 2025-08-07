@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.pojo.Dept;
 import com.example.pojo.Result;
 import com.example.service.DeptService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * 部门管理控制器
  */
+@Slf4j
 @RequestMapping("/depts")
 @RestController
 public class DeptController {
