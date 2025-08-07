@@ -31,4 +31,30 @@
         insert into clazz(name, room, begin_date, end_date, master_id, subject, update_time) values(#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{updateTime})
     </insert>
 
+    <!--根据id查询班级-->
+    <select id="getById" resultType="com.example.pojo.Clazz">
+        select c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id, c.subject
+        from clazz as c where c.id = #{id}
+    </select>
+
+    <!--根据id修改班级-->
+    <update id="update">
+        update clazz
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="room != null and room != ''">room = #{room},</if>
+            <if test="beginDate != null">begin_date= #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null and subject != ''">subject = #{subject},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id删除班级-->
+    <delete id="deleteById">
+        delete from clazz where id = #{id}
+    </delete>
+
 </mapper>

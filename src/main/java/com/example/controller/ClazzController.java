@@ -49,7 +49,31 @@ public class ClazzController {
     /**
      * 根据id查询班级
      */
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id) {
+        log.info("根据id查询班级，id：{}", id);
+        return Result.success(clazzService.getById(id));
+    }
 
+    /**
+     * 根据id修改班级
+     */
+    @PutMapping
+    public Result update(@RequestBody Clazz clazz) {
+        log.info("修改班级信息,参数：{}", clazz);
+        clazzService.update(clazz);
+        return Result.success();
+    }
+
+    /**
+     * 根据id删除班级
+     */
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
+        log.info("根据id删除班级，id：{}", id);
+        clazzService.deleteById(id);
+        return Result.success();
+    }
 
 
 

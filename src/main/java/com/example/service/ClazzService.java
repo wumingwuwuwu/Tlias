@@ -18,4 +18,10 @@ public interface ClazzService {
     List<Clazz> findAll();
 
     void save(Clazz clazz);
+
+    Clazz getById(Integer id);
+
+    void update(Clazz clazz);
+
+    void deleteById(Integer id);
 }

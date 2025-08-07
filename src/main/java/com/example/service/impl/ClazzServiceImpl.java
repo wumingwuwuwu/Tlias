@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -46,4 +47,30 @@ public class ClazzServiceImpl implements ClazzService {
     public void save(Clazz clazz) {
         clazzMapper.insert(clazz);
     }
+
+    /**
+     * 根据id查询班级信息
+     */
+    @Override
+    public Clazz getById(Integer id) {
+        return clazzMapper.getById(id);
+    }
+
+    /**
+     * 根据id修改班级信息
+     */
+    @Override
+    public void update(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazzMapper.update(clazz);
+    }
+
+    /**
+     * 根据id删除班级信息
+     */
+    @Override
+    public void deleteById(Integer id) {
+        clazzMapper.deleteById(id);
+    }
+
 }

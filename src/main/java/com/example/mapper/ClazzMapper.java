@@ -24,4 +24,16 @@ public interface ClazzMapper {
      * 新增
      */
     void insert(Clazz clazz);
+
+    /**
+     * 根据id查询班级
+     */
+    Clazz getById(Integer id);
+
+    /**
+     * 根据id修改班级
+     */
+    void update(Clazz clazz);
+
+    void deleteById(Integer id);
 }
