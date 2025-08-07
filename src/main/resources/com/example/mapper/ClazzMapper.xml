@@ -21,8 +21,7 @@
 
     <!--查询所有班级-->
     <select id="findAll" resultType="com.example.pojo.Clazz">
-        select c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id, c.subject, c.update_time, e.name masterName,
-        (case when begin_date > now() then '未开班' when now() > end_date then '已结课' else '在读中' end) status
+        select c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id, c.subject, c.update_time, e.name masterName
         from clazz as c left join emp e on c.master_id = e.id
     </select>
 
@@ -33,8 +32,8 @@
 
     <!--根据id查询班级-->
     <select id="getById" resultType="com.example.pojo.Clazz">
-        select c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id, c.subject
-        from clazz as c where c.id = #{id}
+        select c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id, c.subject, e.name masterName
+        from clazz as c left join emp e on c.master_id = e.id where c.id = #{id}
     </select>
 
     <!--根据id修改班级-->

@@ -10,7 +10,11 @@ import java.util.List;
 
 public interface EmpService {
 
-//    List<Emp> list();
+    /**
+     * 查询所有员工
+     * @return
+     */
+    List<Emp> list();
 
     /**
      * 分页查询

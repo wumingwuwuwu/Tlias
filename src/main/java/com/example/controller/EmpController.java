@@ -24,11 +24,11 @@ public class EmpController {
     /**
      * 员工列表
      */
-//    @GetMapping
-//    public Result list() {
-//        List<Emp> deptList = empService.list();
-//        return Result.success(deptList);
-//    }
+    @GetMapping("/list")
+    public Result list() {
+        List<Emp> deptList = empService.list();
+        return Result.success(deptList);
+    }
 
     @GetMapping
     public Result page(EmpQueryParam empQueryParam) {

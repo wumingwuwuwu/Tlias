@@ -13,8 +13,8 @@ public interface EmpMapper {
     /**
      * 查询所有的员工及其对应的部门名称
      */
-    /*@Select("select e.*, d.name as deptName from emp e left join dept d on e.dept_id = d.id")
-    List<Emp> list();*/
+    @Select("select e.*, d.name as deptName from emp e left join dept d on e.dept_id = d.id")
+    List<Emp> findAll();
 
     /**
      * 查询总记录数

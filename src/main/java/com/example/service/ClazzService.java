@@ -15,13 +15,28 @@ public interface ClazzService {
      */
     PageResult page(ClazzQueryParam clazzQueryParam);
 
+    /**
+     * 查询所有班级
+     */
     List<Clazz> findAll();
 
+    /**
+     * 保存班级信息
+     */
     void save(Clazz clazz);
 
+    /**
+     * 根据id查询班级信息
+     */
     Clazz getById(Integer id);
 
+    /**
+     * 更新班级信息
+     */
     void update(Clazz clazz);
 
+    /**
+     * 根据id删除班级信息
+     */
     void deleteById(Integer id);
 }
