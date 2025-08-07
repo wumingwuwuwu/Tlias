@@ -41,7 +41,12 @@ public class StudentController {
     /**
      * 修改学生信息
      */
-    //@PutMapping
+    @PutMapping
+    public Result update(@RequestBody Student student) {
+        log.info("修改学生信息,参数：{}", student);
+        studentService.update(student);
+        return Result.success();
+    }
 
 
     /**
@@ -61,7 +66,12 @@ public class StudentController {
      * 根据id获取学生信息
      * @param id
      */
-    //@GetMapping("/{id}")
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id) {
+        log.info("根据id获取学生信息,参数：{}", id);
+        Student student = studentService.getById(id);
+        return Result.success(student);
+    }
 
 
 }

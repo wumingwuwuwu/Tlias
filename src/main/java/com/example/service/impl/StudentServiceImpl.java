@@ -20,6 +20,11 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
+    /**
+     * 分页查询学生信息
+     * @param studentQueryParam 学生查询参数，包含页码、每页记录数及其他查询条件
+     * @return PageResult<Student> 分页结果，包含总记录数和当前页的学生列表
+     */
     public PageResult<Student> page(StudentQueryParam studentQueryParam) {
         //使用PageHelper为后续查询操作设置分页参数（当前页码、每页记录数）
         PageHelper.startPage(studentQueryParam.getPage(),studentQueryParam.getPageSize());
@@ -30,10 +35,34 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    /**
+     * 保存学生信息
+     * @param student 学生对象，包含学生的基本信息
+     */
     public void save(Student student) {
         student.setCreateTime(LocalDateTime.now());
         student.setUpdateTime(LocalDateTime.now());
         studentMapper.insert(student);
+    }
+
+    @Override
+    /**
+     * 根据ID查询学生信息
+     * @param id 学生ID
+     * @return Student 学生对象，包含学生的基本信息
+     */
+    public Student getById(Integer id) {
+        return studentMapper.getById(id);
+    }
+
+    @Override
+    /**
+     * 更新学生信息
+     * @param student 学生对象，包含学生的基本信息
+     */
+    public void update(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
+        studentMapper.update(student);
     }
 
 }
