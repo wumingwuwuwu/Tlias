@@ -11,4 +11,5 @@ public interface StudentMapper {
 
     List<Student> list(StudentQueryParam studentQueryParam);
 
+    void insert(Student student);
 }

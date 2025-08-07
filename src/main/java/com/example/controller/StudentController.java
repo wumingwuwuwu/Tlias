@@ -30,7 +30,12 @@ public class StudentController {
     /**
      * 添加学生信息
      */
-    //@PostMapping
+    @PostMapping
+    public Result save(@RequestBody Student student) {
+        log.info("添加学生信息,参数：{}", student);
+        studentService.save(student);
+        return Result.success();
+    }
 
 
     /**
