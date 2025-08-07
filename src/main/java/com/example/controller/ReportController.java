@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.pojo.StudentCountOption;
 import com.example.pojo.JobOption;
 import com.example.pojo.Result;
 import com.example.service.ReportService;
@@ -38,5 +39,25 @@ public class ReportController {
         log.info("统计员工性别信息");
         List<Map> genderList = reportService.getEmpGenderData();
         return Result.success(genderList);
+    }
+
+    /**
+     * 获取班级人数统计
+     */
+    @GetMapping("/studentCountData")
+    public Result getClassNumData() {
+        log.info("获取班级人数统计");
+        StudentCountOption studentCountOption= reportService.getStudentCountData();
+        return Result.success(studentCountOption);
+    }
+
+    /**
+     * 统计各个学历的人数
+     */
+    @GetMapping("/studentDegreeData")
+    public Result getStudentEduData() {
+        log.info("获取学员学历统计");
+        List<Map<String,Object>> eduList= reportService.getStudentEduData();
+        return Result.success(eduList);
     }
 }

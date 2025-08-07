@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.pojo.StudentCountOption;
 import com.example.pojo.JobOption;
 
 import java.util.List;
@@ -13,4 +14,8 @@ public interface ReportService {
     JobOption getEmpJobData();
 
     List<Map> getEmpGenderData();
+
+    StudentCountOption getStudentCountData();
+
+    List<Map<String, Object>> getStudentEduData();
 }
