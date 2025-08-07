@@ -18,4 +18,6 @@ public interface StudentMapper {
     void update(Student student);
 
     void deleteByIds(List<Integer> ids);
+
+    void violation(Integer id, Integer score);
 }

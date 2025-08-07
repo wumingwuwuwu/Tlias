@@ -83,4 +83,12 @@
             </foreach>
     </delete>
 
+    <!--违纪处理-->
+    <update id="violation">
+        update student
+        set violation_count = violation_count + 1,
+            violation_score = violation_score + #{score}
+        where id = #{id}
+    </update>
+
 </mapper>

@@ -74,4 +74,14 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.deleteByIds(ids);
     }
 
+    @Override
+    /**
+     * 扣学生积分
+     * @param id 学生ID
+     * @param score 扣积分数
+     */
+    public void violation(Integer id, Integer score) {
+        studentMapper.violation(id, score);
+    }
+
 }
