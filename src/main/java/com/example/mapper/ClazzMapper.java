@@ -2,7 +2,6 @@ package com.example.mapper;
 
 import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
-import com.example.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -39,4 +38,9 @@ public interface ClazzMapper {
      * 根据id删除班级
      */
     void deleteById(Integer id);
+
+    /**
+     * 根据班级id查询班级人数
+     */
+    Integer studentCountByClazzId(Integer id);
 }

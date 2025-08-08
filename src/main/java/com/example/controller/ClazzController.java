@@ -70,9 +70,15 @@ public class ClazzController {
      */
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
-        log.info("根据id删除班级，id：{}", id);
-        clazzService.deleteById(id);
-        return Result.success();
+        try {
+            log.info("根据id删除班级，id：{}", id);
+            clazzService.deleteById(id);
+            return Result.success();
+        } catch (RuntimeException e) {
+            log.error("删除班级异常，id：{}，班级中还有学员不能删除", id);
+            return Result.error(e.getMessage());
+        }
+
     }
 
 

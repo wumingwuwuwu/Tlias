@@ -20,6 +20,11 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public void deleteById(Integer id) {
+        Integer empCount = deptMapper.getCountByClazzId(id);
+        if (empCount > 0) {
+            throw new RuntimeException("部门下有员工，不能删除");
+        }
+
         deptMapper.deleteById(id);
     }
 

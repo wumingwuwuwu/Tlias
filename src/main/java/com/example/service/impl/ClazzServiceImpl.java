@@ -69,6 +69,10 @@ public class ClazzServiceImpl implements ClazzService {
      */
     @Override
     public void deleteById(Integer id) {
+        Integer studentCount = clazzMapper.studentCountByClazzId(id);
+        if (studentCount > 0) {
+            throw new RuntimeException("班级中还有学员，不能删除");
+        }
         clazzMapper.deleteById(id);
     }
 

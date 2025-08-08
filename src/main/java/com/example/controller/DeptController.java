@@ -35,9 +35,14 @@ public class DeptController {
      */
     @DeleteMapping
     public Result delete(Integer id){
-        System.out.println("根据id删除部门, id=" + id);
-        deptService.deleteById(id);
-        return Result.success();
+        try {
+            log.info("删除部门, id= {}", id);
+            deptService.deleteById(id);
+            return Result.success();
+        } catch (RuntimeException e) {
+            log.error("删除部门失败, id= {}，部门下有员工不能删除", id);
+            return Result.error(e.getMessage());
+        }
     }
 
     /**

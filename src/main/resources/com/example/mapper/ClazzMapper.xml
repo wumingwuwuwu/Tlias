@@ -56,4 +56,9 @@
         delete from clazz where id = #{id}
     </delete>
 
+    <!--根据班级id查询班级人数-->
+    <select id="studentCountByClazzId" resultType="java.lang.Integer">
+        select count(id) from student where clazz_id = #{id}
+    </select>
+
 </mapper>

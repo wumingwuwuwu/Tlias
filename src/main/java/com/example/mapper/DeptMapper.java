@@ -22,4 +22,7 @@ public interface DeptMapper {
 
     @Update("UPDATE dept SET name=#{name},update_time=#{updateTime} WHERE id=#{id}")
     void update(Dept dept);
+
+    @Select("SELECT COUNT(id) FROM emp WHERE dept_id= #{id}")
+    Integer getCountByClazzId(Integer id);
 }
