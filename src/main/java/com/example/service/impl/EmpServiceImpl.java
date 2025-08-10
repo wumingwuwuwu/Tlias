@@ -4,6 +4,7 @@ import com.example.mapper.EmpExprMapper;
 import com.example.mapper.EmpMapper;
 import com.example.pojo.*;
 import com.example.service.EmpService;
+import com.example.utils.JWTUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 员工管理
@@ -103,7 +106,12 @@ public class EmpServiceImpl implements EmpService {
     public LoginInfo login(Emp emp) {
         Emp empLogin = empMapper.getUsernameAndPassword(emp);
         if(empLogin != null){
-            LoginInfo loginInfo = new LoginInfo(empLogin.getId(), empLogin.getUsername(), empLogin.getName(), null);
+            //生成JWT令牌
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", empLogin.getId());
+            claims.put("username", empLogin.getUsername());
+            String token = JWTUtils.generateToken(claims);
+            LoginInfo loginInfo = new LoginInfo(empLogin.getId(), empLogin.getUsername(), empLogin.getName(), token);
             return loginInfo;
         }
         return null;

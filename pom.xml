@@ -66,6 +66,19 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.7</version>
         </dependency>
+        <!-- JWT依赖-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!--高版本没有这个包，自己添加-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.4.0-b180830.0359</version>
+        </dependency>
+
     </dependencies>
 
     <build>
