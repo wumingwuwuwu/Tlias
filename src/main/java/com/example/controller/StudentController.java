@@ -22,7 +22,6 @@ public class StudentController {
     /**
      * 分页获取所有学生信息
      */
-    @LogOperation
     @GetMapping
     public Result page(StudentQueryParam studentQueryParam) {
         log.info("分页获取所有学生信息,参数：{}", studentQueryParam);
