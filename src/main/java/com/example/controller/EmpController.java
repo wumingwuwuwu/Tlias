@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.LogOperation;
 import com.example.pojo.*;
 import com.example.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +23,14 @@ public class EmpController {
     /**
      * 员工列表
      */
+    @LogOperation
     @GetMapping("/list")
     public Result list() {
         List<Emp> deptList = empService.list();
         return Result.success(deptList);
     }
 
+    @LogOperation
     @GetMapping
     public Result page(EmpQueryParam empQueryParam) {
         log.info("查询请求参数： {}",empQueryParam);
@@ -37,6 +40,7 @@ public class EmpController {
     /**
      * 新增员工
      */
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Emp emp){
         log.info("新增员工, emp={}", emp);
@@ -47,6 +51,7 @@ public class EmpController {
     /**
      * 批量删除员工
      */
+    @LogOperation
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("批量删除部门: ids={} ", ids);

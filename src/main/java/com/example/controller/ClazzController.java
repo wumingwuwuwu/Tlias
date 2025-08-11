@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.LogOperation;
 import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
 import com.example.pojo.PageResult;
@@ -19,6 +20,7 @@ public class ClazzController {
     /**
      * 分页查询
      */
+    @LogOperation
     @GetMapping
     public Result page(ClazzQueryParam clazzQueryParam) {
         log.info("班级分页查询，参数：{}", clazzQueryParam);
@@ -38,6 +40,7 @@ public class ClazzController {
     /**
      * 添加班级
      */
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Clazz clazz) {
         log.info("添加班级，参数：{}", clazz);
@@ -49,6 +52,7 @@ public class ClazzController {
     /**
      * 根据id查询班级
      */
+    @LogOperation
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("根据id查询班级，id：{}", id);
@@ -58,6 +62,7 @@ public class ClazzController {
     /**
      * 根据id修改班级
      */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Clazz clazz) {
         log.info("修改班级信息,参数：{}", clazz);
@@ -68,6 +73,7 @@ public class ClazzController {
     /**
      * 根据id删除班级
      */
+    @LogOperation
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
         try {

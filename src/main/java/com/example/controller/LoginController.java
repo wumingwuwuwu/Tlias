@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.LogOperation;
 import com.example.pojo.Emp;
 import com.example.pojo.LoginInfo;
 import com.example.pojo.Result;
@@ -17,6 +18,7 @@ public class LoginController {
     @Autowired
     private EmpService empService;
 
+    @LogOperation
     @PostMapping("/login")
     public Result login(@RequestBody Emp emp){
         log.info("员工来登录啦 , {}", emp);

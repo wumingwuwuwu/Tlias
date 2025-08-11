@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.LogOperation;
 import com.example.pojo.Dept;
 import com.example.pojo.Result;
 import com.example.service.DeptService;
@@ -24,6 +25,7 @@ public class DeptController {
     /**
      * 查询部门列表
      */
+    @LogOperation
     @GetMapping
     public Result list(){
         List<Dept> deptList = deptService.findAll();
@@ -33,6 +35,7 @@ public class DeptController {
     /**
      * 删除部门
      */
+    @LogOperation
     @DeleteMapping
     public Result delete(Integer id){
         try {
@@ -48,6 +51,7 @@ public class DeptController {
     /**
      * 新增部门
      */
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Dept dept){
         System.out.println("新增部门, dept=" + dept);
@@ -58,6 +62,7 @@ public class DeptController {
     /**
      * 根据ID查询
      */
+    @LogOperation
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id){
         System.out.println("根据ID查询, id=" + id);
@@ -68,6 +73,7 @@ public class DeptController {
     /**
      * 修改部门
      */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Dept dept){
         System.out.println("修改部门, dept=" + dept);

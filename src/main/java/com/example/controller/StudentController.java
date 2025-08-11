@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.LogOperation;
 import com.example.pojo.PageResult;
 import com.example.pojo.Result;
 import com.example.pojo.Student;
@@ -21,6 +22,7 @@ public class StudentController {
     /**
      * 分页获取所有学生信息
      */
+    @LogOperation
     @GetMapping
     public Result page(StudentQueryParam studentQueryParam) {
         log.info("分页获取所有学生信息,参数：{}", studentQueryParam);
@@ -32,6 +34,7 @@ public class StudentController {
     /**
      * 添加学生信息
      */
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Student student) {
         log.info("添加学生信息,参数：{}", student);
@@ -43,6 +46,7 @@ public class StudentController {
     /**
      * 修改学生信息
      */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Student student) {
         log.info("修改学生信息,参数：{}", student);
@@ -54,6 +58,7 @@ public class StudentController {
     /**
      * 学生违纪处理 /violation
      */
+    @LogOperation
     @PutMapping("/violation/{id}/{score}")
     public Result violation(@PathVariable("id") Integer id, @PathVariable("score") Integer score) {
         log.info("学生违纪处理,学生id：{},违纪分数:{}", id,  score);
@@ -66,6 +71,7 @@ public class StudentController {
      * 批量删除学生信息
      * @param ids
      */
+    @LogOperation
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable("ids") List<Integer> ids) {
         log.info("批量删除学生信息,参数：{}", ids);
@@ -78,6 +84,7 @@ public class StudentController {
      * 根据id获取学生信息
      * @param id
      */
+    @LogOperation
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("根据id获取学生信息,参数：{}", id);
